@@ -1,0 +1,50 @@
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 70px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* footer */
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777777;
+
+  a {
+    color: #555555;
+
+    &:hover {
+      color: #222222;
+    }
+  }
+
+  span {
+    float: left;
+    margin-right: 15px;
+  }
+
+  ul {
+    float: right;
+    list-style: none;
+    
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+.centering {
+  text-align: center;
+}
