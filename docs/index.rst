@@ -3,21 +3,21 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Heterogeneous Knowledge Examination Tool's documentation!
+Welcome to HKET's documentation!
 ====================================================================
 
-Heterogeneous Knowledge Examination Tool is a platform to conduct examinations.
+The HKET or Heterogeneous Knowledge Examination Tool is a platform to conduct examinations.
 It is currently under development and not ready to be deployed in production.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   
+   instructor
+   student
+   
+The tool will support the creation of multiple choice tests by an instructor that can be taken by students.
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+License
+-------
+The code is licensed `MIT <https://github.com/mikevo/uno-heterogeneous-knowledge/blob/master/LICENSE>`_ and this documentation is licensed `CC-BY 4.0 <https://github.com/mikevo/uno-heterogeneous-knowledge/blob/master/docs/LICENSE>`_.
