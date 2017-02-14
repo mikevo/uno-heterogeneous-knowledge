@@ -1,9 +1,15 @@
 require 'test_helper'
 
 class DashboardControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = users(:one)
+  end
+  
   test "should get index" do
+    sign_in_user(@user)
+    
     get dashboard_url
-    assert_response :found  #responds with 302 redirect to user's profile
+    assert_response :success
   end
 
 end
