@@ -10,7 +10,7 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
     assert_response :found
   end
   
-  test "should not get index with sign_in" do
+  test "should get index with sign_in" do
     sign_in_user(@user)
     
     get dashboard_url
