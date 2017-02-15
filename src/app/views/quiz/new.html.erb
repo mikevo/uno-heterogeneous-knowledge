@@ -1,0 +1,15 @@
+<div class="create-quiz">
+  <div class="container">
+    <% if current_user && current_user.teacher? %>
+      <section class="quiz_form">
+        <%= form_for(@quiz) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <div class="field">
+            <%= f.text_field :title, placeholder: "Create a new quiz..." %>
+          </div>
+          <%= f.submit "Create", class: "btn btn-primary" %>
+        <% end %>
+      </section>
+    <% end %>
+  </div>
+</div>

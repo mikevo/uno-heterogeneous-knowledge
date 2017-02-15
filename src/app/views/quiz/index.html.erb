@@ -1,0 +1,10 @@
+<div class="quizzes">
+  <div class="container">
+    <% @quizzes.each do |quiz|%>
+      <div class="quiz">
+        <h2><%= quiz.title %></h2>
+        <p><%= link_to "View Quiz", quiz_path(quiz) %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

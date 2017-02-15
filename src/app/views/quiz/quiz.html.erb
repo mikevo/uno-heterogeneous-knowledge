@@ -1,0 +1,15 @@
+<div class="quiz-show">
+  <div class="container">
+    <h2><%= @quiz.name %></h2>
+    <div class="quiz-info">
+      <p class="title"><%= @quiz.title %></p>
+    </div>
+
+    <% if current_user && current_user.teacher? %>
+    	<p class="quiz-edit">
+        <%= link_to "Edit Quiz", edit_quiz_path(@quiz.id) %>
+    	</p>
+   	<% end %>
+
+  </div>
+</div>
