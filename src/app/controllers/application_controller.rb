@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
     flash[:warning] = 'You have to authenticate to access this page.'
     redirect_to sign_in_path
   end
+
+  def require_teacher
+    redirect_to '/' unless current_user.teacher?
+  end
 end
