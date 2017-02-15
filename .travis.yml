@@ -16,3 +16,7 @@ deploy:
     secure: Ua4LbwbJaZ2qgT1fCL1pR1INPWB73dmBJMipz/bSlNaCyQdLUyGRL/5rtLEhGFsZc7gNosy8mYAHfxKzNMOlx8xZc13tnAbVhYaduIShAoypWpUyMDOgXHcshGRPxY+9Cs6Qp0dLazAaLhHk/+joUyeyn97Gs/p59wGcf+QxH9MoEdO4HVWtbOXopPvn1Og9E0VlHUN5G1b0akCNJWME+SVUkV+TQ7gxpvskh8muo6U0gHPxvZqSIm2/0hRSmEkbu+auKVxZwyn65UpXfI0XgZnLt7GSmj0FnmAtVFClYqNmix7s+6/FpLwrDqj4RUCBWzX665Kd/QSmcCfzWnts8ELeJVN1pP/gGGm2i5Y0T5y5CG8EfLij6xaNi+1Rj+8iZ3UjjZ7gHajpbUZDsUZ/AskwK7K5fX5FYm0GdrVS06vq0ZwgkwP80KqGY+2d97us5EELPUlwE5/1sTMqIZbJeQJg0zwRCr1gVtYO7xy3lwi+kV5cFfEoriMB51n+rKjchtisea71oFJ6+WL4G9BCaCuDmKYCW97/+3j7jaomaLql2PGMeXzfGJydaZbbnm4RAbpXmErWYU9EmM13Z/l6SR/melovpQyh5MVko+VNxV8rpgSVgWXnWKMOk3fQYH5xHLw0zTFsQbwBWmTSsl1eUTZuQhFOcGHDFbCiSWNrlpU=
   app: hk-examination
   on: master
+  run:
+    - "rake db:migrate"
+    - restart
+    - "rake cleanup"
