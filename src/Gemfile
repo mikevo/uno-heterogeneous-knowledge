@@ -35,6 +35,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Bootstrap
 gem 'bootstrap-sass', '~> 3.3.7'
 
+# Use sorcery for authentication
+gem 'sorcery'
+# Used for email validation
+gem 'validates_email_format_of'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
