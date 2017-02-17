@@ -21,9 +21,9 @@ class QuizController < ApplicationController
     @quiz = Quiz.new(quiz_params)
     if @quiz.save
       flash[:success] = "Quiz Created!"
-      redirect_to rool_url
+      redirect_to root_url
     else
-      render 'static_pages/home'
+      redirect_to root_url
     end
   end
 
