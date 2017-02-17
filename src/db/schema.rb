@@ -22,13 +22,11 @@ ActiveRecord::Schema.define(version: 20170214064626) do
 
   create_table "quizzes", force: :cascade do |t|
     t.text     "title"
-    t.integer  "user_id"
     t.integer  "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_quizzes_on_course_id"
-    t.index ["user_id", "created_at"], name: "index_quizzes_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_quizzes_on_user_id"
+    t.index ["created_at"], name: "index_quizzes_on_created_at"
   end
 
   create_table "users", force: :cascade do |t|
