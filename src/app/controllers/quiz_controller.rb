@@ -1,15 +1,11 @@
 class QuizController < ApplicationController
   before_action :require_teacher, only: [:edit, :update, :destroy]
 
-  def index
+  def list
     @quizzes = Quiz.all
   end
 
   def show
-    @quiz = Quiz.find(params[:id])
-  end
-
-  def edit
     @quiz = Quiz.find(params[:id])
   end
 
@@ -25,6 +21,10 @@ class QuizController < ApplicationController
     else
       redirect_to root_url
     end
+  end
+
+  def edit
+    @quiz = Quiz.find(params[:id])
   end
 
   def update
