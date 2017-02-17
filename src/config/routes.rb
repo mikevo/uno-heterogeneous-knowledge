@@ -9,8 +9,14 @@ Rails.application.routes.draw do
   delete '/sign_out', to: 'sessions#destroy', as: :sign_out
 
   get '/course', to: 'course#index', as: :course
-  get '/quiz', to: 'quiz#index', as: :quiz
+
   get '/quiz/new', to: 'quiz#new', as: :new_quiz
+  get '/quizzes', to: 'quiz#list', as: :quizzes
+  post '/quizzes', to: 'quiz#create'
+  get '/quiz/:id', to: 'quiz#show', as: :quiz
+  get '/quiz/:id/edit', to: 'quiz#edit', as: :edit_quiz
+  patch '/quiz/:id', to: 'quiz#update'
+  get '/quiz/:id/delete', to: 'quiz#destroy', as: :delete_quiz
 
   root 'static_pages#home'
 
