@@ -8,9 +8,9 @@ class Ability
     if user.role?('admin')
       can :manage, :all
     elsif user.role?('teacher')
-      
+      can :index, :dashboard
     elsif user.role?('student')
-      can :read, :dashboard
+      can :index, :dashboard
     end
     
     #
