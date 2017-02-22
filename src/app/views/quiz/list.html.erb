@@ -1,0 +1,17 @@
+<div class="quizzes">
+  <div class="container">
+    <% if current_user && current_user.teacher? %>
+    	<p class="quiz-create">
+        <%= link_to "Create Quiz", new_quiz_path %>
+    	</p>
+   	<% end %>
+  </div>
+  <div class="container">
+    <% @quizzes.each do |quiz|%>
+      <div class="quiz">
+        <h2><%= quiz.title %></h2>
+        <p><%= link_to "View Quiz", {:action => 'show', :id => quiz.id} %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -10,13 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208232446) do
+ActiveRecord::Schema.define(version: 20170214064626) do
+
+  create_table "courses", force: :cascade do |t|
+    t.text     "title"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_courses_on_user_id"
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.text     "title"
+    t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_quizzes_on_course_id"
+    t.index ["created_at"], name: "index_quizzes_on_created_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",            null: false
     t.string   "crypted_password"
     t.string   "salt"
     t.string   "username"
+    t.string   "role"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["email"], name: "index_users_on_email", unique: true
