@@ -1,7 +1,6 @@
-class QuizController < ApplicationController
-  before_action :require_teacher, only: [:edit, :update, :destroy]
+class QuizzesController < ApplicationController
 
-  def list
+  def index
     @quizzes = Quiz.all
   end
 
