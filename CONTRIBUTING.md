@@ -4,7 +4,7 @@ This handbook is based on the [GitLab team handbook](https://about.gitlab.com/ha
 ## TLTR
 * **Values**: We value results, transparency, sharing, freedom, efficiency,
 collaboration, kindness, boring solutions.
-* **Communication**: Prefere issue trackers over chat.
+* **Communication**: Prefer issue trackers over chat.
 * **Workflow**: [GitHub Flow](https://guides.github.com/introduction/flow/) and don't forget to open issues if you are working on something that everyone can see what you are working on.
 * **Issue closing**: Do not close an issue until it is fully done, which means code has been merged, all issue trackers are updated and any documentation is written and merged.
 
