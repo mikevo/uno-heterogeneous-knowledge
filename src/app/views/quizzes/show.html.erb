@@ -5,10 +5,10 @@
       <p class="title">Quiz Info Here</p>
     </div>
 
-    <% if current_user && current_user.teacher? %>
+    <% if current_user %>
     	<p class="quiz-edit">
         <%= link_to "Edit Quiz", edit_quiz_path(@quiz.id) %>
-        <%= link_to "Delete Quiz", delete_quiz_path(@quiz.id) %>
+        <%= link_to "Delete Quiz", quiz_path(@quiz.id), method: :delete %>
     	</p>
    	<% end %>
   </div>

@@ -1,6 +1,6 @@
 <div class="quizzes">
   <div class="container">
-    <% if current_user && current_user.teacher? %>
+    <% if current_user %>
     	<p class="quiz-create">
         <%= link_to "Create Quiz", new_quiz_path %>
     	</p>

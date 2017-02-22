@@ -1,6 +1,6 @@
 <div class="create-quiz">
   <div class="container">
-    <% if current_user && current_user.teacher? %>
+    <% if current_user %>
       <section class="quiz_form">
         <p>Quiz</p>
         <%= form_for(@quiz) do |f| %>
