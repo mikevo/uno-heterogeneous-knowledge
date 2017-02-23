@@ -5,7 +5,6 @@ class SorceryCore < ActiveRecord::Migration[5.0]
       t.string :crypted_password
       t.string :salt
       t.string :username
-      t.string :role
 
       t.timestamps                :null => false
     end
