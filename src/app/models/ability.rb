@@ -3,8 +3,8 @@ class Ability
 
   def initialize(user)
     # Define abilities for the passed in user here. For example:
-    
-    user ||= User.new # nil guard; creats a new user object
+
+    user ||= User.new # nil guard; creates a new user object
     if user.role?('admin')
       can :manage, :all
     elsif user.role?('teacher')
@@ -12,7 +12,7 @@ class Ability
     elsif user.role?('student')
       can :index, :dashboard
     end
-    
+
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
