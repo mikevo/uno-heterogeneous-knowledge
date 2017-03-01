@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
-  skip_authorization_check
+
+  skip_authorization_check only: [:new, :create]
 
   def new
     @user = User.new
