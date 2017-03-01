@@ -16,9 +16,9 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new(quiz_params)
     if @quiz.save
       flash[:success] = "Quiz Created!"
-      redirect_to root_url
+      redirect_to dashboard_url
     else
-      redirect_to root_url
+      redirect_to dashboard_url
     end
   end
 
@@ -38,7 +38,7 @@ class QuizzesController < ApplicationController
   def destroy
     @quiz = Quiz.find(params[:id])
     @quiz.destroy
-    redirect_to root_url
+    redirect_to dashboard_url
   end
 
   private
