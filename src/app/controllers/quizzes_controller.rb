@@ -1,4 +1,5 @@
 class QuizzesController < ApplicationController
+  skip_authorization_check
 
   def index
     @quizzes = Quiz.all
