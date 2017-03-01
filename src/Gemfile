@@ -39,6 +39,8 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'sorcery'
 # Used for email validation
 gem 'validates_email_format_of'
+# Use cancancan for authorization
+gem 'cancancan', '~> 1.16'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
