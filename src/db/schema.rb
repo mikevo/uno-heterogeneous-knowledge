@@ -12,6 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20170220172246) do
 
+  create_table "quizzes", force: :cascade do |t|
+    t.text     "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_quizzes_on_created_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                        null: false
     t.string   "crypted_password"
