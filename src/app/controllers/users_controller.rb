@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       login(params[:user][:email], params[:user][:password])
       flash[:success] = 'Welcome!'
-      redirect_to root_path
+      redirect_to dashboard_path
     else
       render 'new'
     end
