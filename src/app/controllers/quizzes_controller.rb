@@ -17,9 +17,10 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new(quiz_params)
     if @quiz.save
       flash[:success] = "Quiz Created!"
-      redirect_to dashboard_url
+      redirect_to @quiz
     else
-      redirect_to dashboard_url
+      # TODO: Add some feedback for the user
+      render 'new'
     end
   end
 
@@ -39,7 +40,8 @@ class QuizzesController < ApplicationController
   def destroy
     @quiz = Quiz.find(params[:id])
     @quiz.destroy
-    redirect_to dashboard_url
+    flash[:success] = "Quiz deleted."
+    redirect_to quizzes_url
   end
 
   private
