@@ -4,11 +4,30 @@ This handbook is based on the [GitLab team handbook](https://about.gitlab.com/ha
 ## TLTR
 * **Values**: We value results, transparency, sharing, freedom, efficiency,
 collaboration, kindness, boring solutions.
-* **Communication**: Prefere issue trackers over chat.
+* **Communication**: Prefer issue trackers over chat.
 * **Workflow**: [GitHub Flow](https://guides.github.com/introduction/flow/) and don't forget to open issues if you are working on something that everyone can see what you are working on.
 * **Issue closing**: Do not close an issue until it is fully done, which means code has been merged, all issue trackers are updated and any documentation is written and merged.
 
+## Leadership
+This paragraph describes who is responsible for what. It is the responsibility of every leader to ensure that in his area everything is working smooth and sound. Further, a leader is responsible that everything required is done in time. The leader needs to put in effort to explain to the others what is necessary to keep up with his standards.
 
+### App backend/code
+[@mikevo](https://github.com/mikevo) is the leader of this part. He needs to ensure that the code follows the conventions of ruby on rails and is of good quality.
+
+### App documentation
+[@kmaus](https://github.com/kmaus) is the leader of this part. She is responsible that the code and the functionality of the application is well documented. This includes the user manual.
+
+### App frontend/UI
+[@danieldekerlegand](https://github.com/danieldekerlegand) is the leader of this part. He is responsible that the user interface is easy to use and looks good.
+
+### App tests
+[@ntalen](https://github.com/ntalen) is the leader of this part. He is responsible that the code is tested well. This basically means he needs to ensure that there exists unit tests that cover all major parts of the project.
+
+### Deliverables
+[@asapkot2](https://github.com/asapkot2) is the leader of this part. He is responsible that everything that needs to be delivered (code, documents, presentations, ...) is ready to be delivered on time. This means that he needs to take care that someone is producing all that stuff and that all this things produced as a part of the development process. Further, he is responsible to deliver all those things on time e.g. by uploading them on Moodle.
+
+### Innovations/new features
+[@egurel](https://github.com/egurel) is the leader of this part. He is responsible that there are always new features and ideas that can be implemented next.
 
 ## Values
 We value results, transparency, sharing, freedom, efficiency,

@@ -1,0 +1,17 @@
+<div class="quiz-show">
+  <div class="container">
+    <h2><%= @quiz.title %></h2>
+    <div class="quiz-info">
+      <p class="title">Quiz Info Here</p>
+    </div>
+
+    <% if current_user %>
+    	<p class="quiz-edit">
+        <%= link_to "Edit Quiz", edit_quiz_path(@quiz) %>
+        <%= link_to 'Delete Quiz', quiz_path(@quiz),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+    	</p>
+   	<% end %>
+  </div>
+</div>

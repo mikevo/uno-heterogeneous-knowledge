@@ -1,0 +1,8 @@
+<div class="quiz-edit">
+  <div class="container">
+    <%= form_for(@quiz) do |f| %>
+      <%= f.text_field :title %>
+      <%= f.submit "Update", :class => "form-btn" %>
+    <% end %>
+  </div>
+</div>
