@@ -11,6 +11,7 @@ class Ability
       can :index, :dashboard
     elsif user.role?('student')
       can :index, :dashboard
+      can :update, User, id: user.id
     end
 
     #

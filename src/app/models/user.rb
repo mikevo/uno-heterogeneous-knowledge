@@ -12,6 +12,11 @@ class User < ApplicationRecord
     admin: 2
   }
 
+  def change_password!(new_password)
+    self.send(:"#{sorcery_config.password_attribute_name}=", new_password)
+    sorcery_adapter.save
+  end
+
   def role?(role_name)
     role == role_name
   end

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
-
   skip_authorization_check only: [:new, :create]
 
   def new
@@ -20,10 +19,11 @@ class UsersController < ApplicationController
 
   def password
     render 'change_password'
+    authorize! :update, User
   end
 
-  def update
-    @user = User.find(params[:user])
+  def change_password
+    @user = User.find(current_user.id)
 
     return if @user.blank?
 
@@ -34,6 +34,7 @@ class UsersController < ApplicationController
     else
       render 'change_password'
     end
+    authorize! :update, User
   end
 
   private
