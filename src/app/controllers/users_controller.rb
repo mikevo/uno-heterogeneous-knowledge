@@ -18,6 +18,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def password
+    render 'change_password'
+  end
+
+  def update
+    @user = User.find(params[:user])
+
+    return if @user.blank?
+
+    @user.password_confirmation = params[:user][:password_confirmation]
+    if @user.change_password!(params[:user][:password])
+      flash[:success] = 'Password was successfully updated.'
+      redirect_to dashboard_path
+    else
+      render 'change_password'
+    end
+  end
+
   private
 
   def user_params
