@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
-
   skip_authorization_check only: [:new, :create]
 
   def new
@@ -16,6 +15,26 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def password
+    render 'change_password'
+    authorize! :update, User
+  end
+
+  def change_password
+    @user = User.find(current_user.id)
+
+    return if @user.blank?
+
+    @user.password_confirmation = params[:user][:password_confirmation]
+    if @user.change_password!(params[:user][:password])
+      flash[:success] = 'Password was successfully updated.'
+      redirect_to dashboard_path
+    else
+      render 'change_password'
+    end
+      authorize! :update, User
   end
 
   def change_role
