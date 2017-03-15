@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get 'admin/users'
+
   get '/dashboard', to: 'dashboard#index', as: :dashboard
 
   resources :users, only: [:new, :create]
+  put '/users/:id/change_role_to/:role', to: 'users#change_role', as: :users_change_role
   get '/sign_up', to: 'users#new', as: :sign_up
 
   resources :sessions, only: [:new, :create, :destroy]
@@ -14,7 +17,7 @@ Rails.application.routes.draw do
   resources :quizzes
 
   root 'static_pages#home'
-  
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
