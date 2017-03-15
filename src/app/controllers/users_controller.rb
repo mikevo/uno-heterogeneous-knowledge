@@ -34,6 +34,19 @@ class UsersController < ApplicationController
     else
       render 'change_password'
     end
+      authorize! :update, User
+  end
+
+  def change_role
+    user = User.find(params[:id])
+
+    if user.update(role: params[:role])
+      flash[:success] = 'Role updated!'
+      redirect_to admin_users_path
+    else
+      flash[:danger] = 'Role update failed!'
+      redirect_to admin_users_path
+    end
     authorize! :update, User
   end
 

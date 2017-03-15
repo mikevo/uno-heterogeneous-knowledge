@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  get 'admin/users'
+
   get '/dashboard', to: 'dashboard#index', as: :dashboard
 
   resources :users, only: [:new, :create]
   get '/users/password', to: 'users#password'
   put '/users/change_password', to: 'users#change_password'
+  put '/users/:id/change_role_to/:role', to: 'users#change_role', as: :users_change_role
+
   get '/sign_up', to: 'users#new', as: :sign_up
 
   resources :sessions, only: [:new, :create, :destroy]
