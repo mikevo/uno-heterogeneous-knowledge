@@ -1,16 +1,22 @@
 <div class="quizzes">
-  <div class="container">
+  <div class="row">
     <% if current_user %>
     	<p class="quiz-create">
-        <%= link_to "Create Quiz", new_quiz_path %>
+        <%= link_to new_quiz_path, class: "btn btn-success" do %>
+          <i class="glyphicon glyphicon-plus-sign"></i> New Quiz
+        <% end %>
     	</p>
    	<% end %>
   </div>
-  <div class="container">
+  <div class="row">
     <% @quizzes.each do |quiz|%>
-      <div class="quiz">
-        <h2><%= quiz.title %></h2>
-        <p><%= link_to "View Quiz", {:action => 'show', :id => quiz.id} %></p>
+      <div class="quiz-card-wrapper col-sm-4">
+        <div class="quiz-card">
+          <div class="quiz-card-contents">
+            <h2><%= quiz.title %></h2>
+            <p><%= link_to "View Quiz", {:action => 'show', :id => quiz.id} %></p>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
