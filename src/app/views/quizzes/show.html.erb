@@ -2,7 +2,16 @@
   <div class="container">
     <h2><%= @quiz.title %></h2>
     <div class="quiz-info">
-      <p class="title">Quiz Info Here</p>
+		<ol>
+			<% for question in @quiz.questions %>
+				<li><%=h question.content %></li>
+				<ul>
+					<% for answer in question.answers %>
+						<li><%=h answer.content %></li>
+					<% end %>
+				</ul>
+			<% end %>
+		</ol>
     </div>
 
     <% if current_user %>
