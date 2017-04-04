@@ -2,6 +2,8 @@
 
 one:
   name: MyString
+  teacher_id: 1
 
 two:
   name: MyString
+  teacher_id: 1
