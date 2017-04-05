@@ -1,11 +1,6 @@
 <div class="quiz-edit">
   <div class="container">
-    <%= form_for(@quiz) do |f| %>
-      <div class="form-group">
-        <label for="title">New Quiz Title</label>
-        <%= f.text_field :title, class: "form-control" %>
-      </div>
-      <%= f.submit "Update", :class => "btn btn-primary" %>
-    <% end %>
+	  <h1>Edit Quiz</h1>
+	<%= render :partial => 'form' %>
   </div>
 </div>
