@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
+  has_and_belongs_to_many :courses, class_name: "Course"
+
   validates :password, length: { minimum: 3 }, if: :new_user?
 
   validates :password, confirmation: true

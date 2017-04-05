@@ -1,5 +1,6 @@
 <ul class="nav navbar-nav">
   <li><%= link_to 'Quizzes', quizzes_path %></li>
+  <li><%= link_to 'Courses', courses_path %></li>
   <% if can? :manage, User %>
   <li><%= link_to 'Manage User Permission', admin_users_path %></li>
   <% end %>
