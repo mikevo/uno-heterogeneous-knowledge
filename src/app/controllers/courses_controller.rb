@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  authorize_resource :class => false
+  load_and_authorize_resource
 
   # GET /courses
   # GET /courses.json
@@ -10,6 +10,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1
   def show
+		@course = Course.find(params[:id])
   end
 
   # GET /courses/new
