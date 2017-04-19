@@ -18,7 +18,12 @@ Rails.application.routes.draw do
   get '/about', to: 'static_pages#about', as: :about
   get '/contact', to:'static_pages#contact', as: :contact
 
-  resources :quizzes
+  resources :quizzes do
+  member do
+    get :attempt
+    post :result
+  end
+end
 
   root 'static_pages#home'
 

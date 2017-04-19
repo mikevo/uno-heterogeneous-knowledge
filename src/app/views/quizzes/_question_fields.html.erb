@@ -1,12 +1,20 @@
-<div class="fields">
-	<p>
-		<%= f.label :content, "Question" %><br />
-		<%= f.text_area :content, :rows => 1, class: "form-control" %>
-		<%= f.check_box :_destroy %>
-		<%= f.label :_destroy, "Remove Question" %>
-	</p>
-	<%= f.fields_for :answers do |builder| %>
-		<%= render 'answer_fields', :f => builder %>
-	<% end %>
-	<p><%= link_to_add_fields "Add Answer", f, :answers %></p>
+ <div class='nested-fields'>
+ <hr>
+    <div class="field">
+      <%= f.label :question %>
+      <%= f.text_field :question , class: "form-control"%>
+    </div>
+
+    <div>
+          <%= f.fields_for :answers do |task| %>
+            <%= render 'answer_fields', :f => task %>
+          <% end %>
+          
+          <br>
+            <%= link_to_add_association 'add options', f, :answers %>
+          
+    </div>
+
+    
+    <%= link_to_remove_association "remove question", f,class: "btn btn-danger btn-xs" %>
 </div>

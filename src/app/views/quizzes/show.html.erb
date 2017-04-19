@@ -2,19 +2,10 @@
   <div class="container">
     <h2><%= @quiz.title %></h2>
     <div class="quiz-info">
-		<ol>
-			<% for question in @quiz.questions %>
-				<li><%=h question.content %></li>
-				<ul>
-					<% for answer in question.answers %>
-						<li><%=h answer.content %></li>
-					<% end %>
-				</ul>
-			<% end %>
-		</ol>
+      <p class="title">Quiz Info Here</p>
     </div>
 
-    <% if current_user %>
+      <% if current_user.role =="teacher" %>
     	<p class="quiz-edit">
         <%= link_to edit_quiz_path(@quiz), class: "btn btn-warning" do %>
           <i class="glyphicon glyphicon-edit"></i> Edit Quiz
@@ -25,7 +16,14 @@
             class: "btn btn-danger" do %>
           <i class="glyphicon glyphicon-remove-circle"></i> Delete Quiz
         <% end %>
+        <% end %>
+
+        <% if current_user.role =="student" %>
+        <%= link_to attempt_quiz_path(@quiz), class: "btn btn-warning" do %>
+          <i class="glyphicon glyphicon-edit"></i> Attempt Quiz
+        <% end %>
+        <% end %>
     	</p>
-   	<% end %>
+   	
   </div>
 </div>

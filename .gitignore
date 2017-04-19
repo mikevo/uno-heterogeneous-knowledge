@@ -1,0 +1,8 @@
+/.DS_Store
+.generators
+.rakeTasks
+misc.xml
+modules.xml
+runConfigurations/
+src.iml
+workspace.xml
