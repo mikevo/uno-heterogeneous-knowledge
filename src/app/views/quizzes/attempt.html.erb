@@ -1,0 +1,25 @@
+<div class="quiz-edit">
+  <div class="container">
+   
+  <h3> <%= @quiz.title %> </h3>
+       <div>
+       <% @count = 1 %>
+      <%= form_tag "result" do %>
+          <% @questions.each do |x| %>
+            Questions: <%= x.question %> <br>
+
+            <% @options.where(question_id: x.id).each do |y| %>
+            <%= radio_button_tag "question#{@count}", y.id %>
+            <%= y.option %> <br>
+            <% end %>
+            <br>
+             <% @count = @count+1 %>
+          <% end %>
+            <%= submit_tag "Save", :class => "btn btn-success" %>
+    <% end %>
+        </div>
+
+      
+     
+  </div>
+</div>
