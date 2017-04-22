@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+  authorize_resource :class => false
 
   # GET /courses
   # GET /courses.json
@@ -10,7 +10,6 @@ class CoursesController < ApplicationController
 
   # GET /courses/1
   def show
-		@course = Course.find(params[:id])
   end
 
   # GET /courses/new
@@ -53,13 +52,13 @@ class CoursesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_course
-      @course = Course.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_course
+    @course = Course.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def course_params
-      params.require(:course).permit(:name, :teacher_id, student_ids: [])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def course_params
+    params.require(:course).permit(:name, :teacher_id, student_ids: [])
+  end
 end

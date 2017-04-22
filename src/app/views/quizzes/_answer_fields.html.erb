@@ -1,8 +1,11 @@
-<p class="fields">
-	<%= f.label :content, "Answer" %><br />
-	<%= f.text_field :content %>
-	<%= f.label :_destroy do %>
-		<%= f.check_box :_destroy %>
-		Remove
-	<% end %>
-</p>
+<div class="quiz-answers">
+  <div class='nested-fields'>
+    <div class="field">
+      <%= f.label :answer %>
+      <%= f.text_field :option, class: "form-control input-sm" %>
+      is correct <%= f.check_box :is_correct,{},"correct", "incorrect" %>
+    </div>
+
+    <%= link_to_remove_association "remove option", f %>
+  </div>
+</div>

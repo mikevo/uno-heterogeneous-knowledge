@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     else
       render 'change_password'
     end
-      authorize! :update, User
+    authorize! :update, User
   end
 
   def change_role
@@ -53,6 +53,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :username)
+    params.require(:user).permit(:email, :password, :password_confirmation, :username, :role)
   end
 end

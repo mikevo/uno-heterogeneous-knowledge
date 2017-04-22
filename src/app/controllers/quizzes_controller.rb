@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-  skip_authorization_check
+  authorize_resource :class => false
 
   def index
     @quizzes = Quiz.all
@@ -11,10 +11,7 @@ class QuizzesController < ApplicationController
 
   def new
     @quiz = Quiz.new
-	3.times do
-		question = @quiz.questions.build
-		4.times { question.answers.build }
-	end
+    @course = Course.all
   end
 
   def create
@@ -30,15 +27,19 @@ class QuizzesController < ApplicationController
 
   def edit
     @quiz = Quiz.find(params[:id])
+    @questions= Question.where(quiz_id: params[:id])
+
+
   end
 
   def update
     @quiz = Quiz.find(params[:id])
-      if @quiz.update(quiz_params)
-        redirect_to @quiz
-      else
-        render 'edit'
-      end
+    if @quiz.update(quiz_params)
+      redirect_to @quiz
+    else
+      render 'edit'
+    end
+
   end
 
   def destroy
@@ -46,11 +47,40 @@ class QuizzesController < ApplicationController
     @quiz.destroy
     flash[:success] = "Quiz deleted."
     redirect_to quizzes_url
+
+
+  end
+
+  def attempt
+    @quiz= Quiz.find(params[:id])
+    @questions= Question.where(quiz_id: params[:id])
+    @options= Answer.all
+  end
+
+  def result
+    @quiz= Quiz.find(params[:id])
+    @questions= Question.where(quiz_id: params[:id])
+
+    @marks=0
+    count=1
+    @questions.each do |q|
+
+      answer= params[:"question#{count}"]
+
+      if( Answer.where(id: answer).pluck(:is_correct)[0] == "correct" )
+        @marks = @marks + 1
+      end
+
+      count= count+1
+    end
+
+    Result.create(student_id: current_user.id, quiz_id: params[:id], marks: @marks)
+
   end
 
   private
-    def quiz_params
-      params.require(:quiz).permit(:title, questions_attributes: [:id, :content, :_destroy, answers_attributes: [:id, :content, :_destroy]])
-    end
+  def quiz_params
+    params.require(:quiz).permit(:title,:course_id, questions_attributes: [:id, :question, :done , :_destroy, answers_attributes: [:id, :option,:is_correct, :_destroy]])
+  end
 
 end

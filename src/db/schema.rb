@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329184931) do
+ActiveRecord::Schema.define(version: 20170422014344) do
 
   create_table "answers", force: :cascade do |t|
-    t.string   "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "option"
+    t.string   "is_correct"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "questions_id"
     t.integer  "question_id"
-    t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["questions_id"], name: "index_answers_on_questions_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -35,11 +37,12 @@ ActiveRecord::Schema.define(version: 20170329184931) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.text     "content"
+    t.string   "question"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "quizzes_id"
     t.integer  "quiz_id"
-    t.index ["quiz_id"], name: "index_questions_on_quiz_id"
+    t.index ["quizzes_id"], name: "index_questions_on_quizzes_id"
   end
 
   create_table "quizzes", force: :cascade do |t|
@@ -49,6 +52,14 @@ ActiveRecord::Schema.define(version: 20170329184931) do
     t.integer  "course_id"
     t.index ["course_id"], name: "index_quizzes_on_course_id"
     t.index ["created_at"], name: "index_quizzes_on_created_at"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "quiz_id"
+    t.integer  "marks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
