@@ -2,25 +2,26 @@
   <h1>Courses</h1>
 
   <% if current_user.role =="teacher" %>
-      <div class="row">
-        <p class="quiz-create">
-          <%= link_to new_course_path, class: "btn btn-success" do %>
-              <i class="glyphicon glyphicon-plus-sign"></i> New Course
-          <% end %>
-        </p>
-      </div>
+  <div class="row">
+    <p class="quiz-create">
+      <%= link_to new_course_path, class: "btn btn-success" do %>
+      <i class="glyphicon glyphicon-plus-sign"></i>
+      New Course
+      <% end %>
+    </p>
+  </div>
   <% end %>
 
   <div class="row">
     <% @courses.each do |course| %>
-        <div class="quiz-card-wrapper col-sm-4">
-          <div class="quiz-card">
-            <div class="quiz-card-contents">
-              <h2><%= course.name %></h2>
-              <p><%= link_to "View Course", {:action => 'show', :id => course.id} %></p>
-            </div>
-          </div>
+    <div class="quiz-card-wrapper col-sm-4">
+      <div class="quiz-card">
+        <div class="quiz-card-contents">
+          <h2><%= course.name %></h2>
+          <p><%= link_to "View Course", {:action => 'show', :id => course.id} %></p>
         </div>
+      </div>
+    </div>
     <% end %>
   </div>
 </div>
