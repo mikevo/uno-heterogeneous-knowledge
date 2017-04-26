@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     else
       render 'change_password'
     end
-    authorize! :update, User
+      authorize! :update, User
   end
 
   def change_role
