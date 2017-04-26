@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
       <%= f.label "Students" %>
-      <%= f.select :student_ids, User.where(role: 'student').collect {|x| [x.username, x.id]}, {include_hidden: false}, {:multiple => true} %>
+      <%= f.select :student_ids, User.where(role: 'student').collect { |x| [x.username, x.id] }, {include_hidden: false}, {:multiple => true} %>
     </div>
 
     <% if @course.id.nil? %>
