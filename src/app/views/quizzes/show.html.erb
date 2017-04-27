@@ -1,0 +1,31 @@
+<div class="quiz-show">
+  <div class="container">
+    <h2><%= @quiz.title %></h2>
+    <div class="quiz-info">
+		<ol>
+			<% for question in @quiz.questions %>
+				<li><%=h question.content %></li>
+				<ul>
+					<% for answer in question.answers %>
+						<li><%=h answer.content %></li>
+					<% end %>
+				</ul>
+			<% end %>
+		</ol>
+    </div>
+
+    <% if current_user %>
+    	<p class="quiz-edit">
+        <%= link_to edit_quiz_path(@quiz), class: "btn btn-warning" do %>
+          <i class="glyphicon glyphicon-edit"></i> Edit Quiz
+        <% end %>
+        <%= link_to quiz_path(@quiz),
+            method: :delete,
+            data: { confirm: 'Are you sure?' },
+            class: "btn btn-danger" do %>
+          <i class="glyphicon glyphicon-remove-circle"></i> Delete Quiz
+        <% end %>
+    	</p>
+   	<% end %>
+  </div>
+</div>
