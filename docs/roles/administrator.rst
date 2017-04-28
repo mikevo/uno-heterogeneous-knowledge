@@ -1,5 +1,5 @@
-Administrator role
-==================
+Administrator
+=============
 
 A user with administrator role is allowed to perform all sections. This includes changing the role of other users. As this is something important to bootstrap the application there is a default administrator account created.
 
