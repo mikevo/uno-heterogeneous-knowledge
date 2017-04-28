@@ -50,6 +50,11 @@ class UsersController < ApplicationController
     authorize! :update, User
   end
 
+  def profile
+    @user = User.find(current_user.id)
+    authorize! :read, User
+  end
+
   private
 
   def user_params
