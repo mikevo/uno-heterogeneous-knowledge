@@ -1,6 +1,8 @@
 Use Cases
 =========
 
+The following use cases have been outlined:
+
 .. toctree::
    :maxdepth: 2
 
