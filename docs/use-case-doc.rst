@@ -15,3 +15,5 @@ The following use cases have been outlined:
    use_cases/UC7
    use_cases/UC8
    use_cases/UC9
+
+.. image:: diagrams/use_case.png

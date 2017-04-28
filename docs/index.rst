@@ -13,10 +13,8 @@ It is currently under development and not ready to be deployed in production.
    :maxdepth: 2
    :caption: Contents:
 
-   administrator
-   instructor
-   student
    quiz
+   role
    use-case-doc
 
 The tool will support the creation of multiple choice tests by an instructor that can be taken by students.
