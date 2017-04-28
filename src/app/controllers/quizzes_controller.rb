@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-  authorize_resource :class => false
+  load_and_authorize_resource
 
   def index
     @quizzes = Quiz.all
@@ -7,6 +7,11 @@ class QuizzesController < ApplicationController
 
   def show
     @quiz = Quiz.find(params[:id])
+
+    respond_to do |format|
+        format.html { @quiz }
+        format.json { render json: json_format(@quiz) }
+    end
   end
 
   def new
@@ -28,8 +33,6 @@ class QuizzesController < ApplicationController
   def edit
     @quiz = Quiz.find(params[:id])
     @questions= Question.where(quiz_id: params[:id])
-
-
   end
 
   def update
@@ -67,7 +70,7 @@ class QuizzesController < ApplicationController
 
       answer= params[:"question#{count}"]
 
-      if( Answer.where(id: answer).pluck(:is_correct)[0] == "correct" )
+      if( Answer.where(id: answer).pluck(:is_correct)[0] == true )
         @marks = @marks + 1
       end
 
@@ -80,7 +83,7 @@ class QuizzesController < ApplicationController
 
   private
   def quiz_params
-    params.require(:quiz).permit(:title,:course_id, questions_attributes: [:id, :question, :done , :_destroy, answers_attributes: [:id, :option,:is_correct, :_destroy]])
+    params.require(:quiz).permit(:title,:course_id, questions_attributes: [:id, :content, :done , :_destroy, answers_attributes: [:id, :content, :is_correct, :_destroy]])
   end
 
 end

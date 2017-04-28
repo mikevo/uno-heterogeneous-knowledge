@@ -9,17 +9,13 @@ class Ability
       can :manage, :all
     elsif user.role?('teacher')
       can :index, :dashboard
-      can :create, [:course, :quiz]
-      can :modify, :course, teacher_id: user.id
-      can :read, [:course, :quiz]
-      can :edit, :quiz
-      can :update, :quiz
+      can :manage, [Course, Quiz, Question, Answer]
     elsif user.role?('student')
       can :index, :dashboard
       can :update, User, id: user.id
-      can :read, [:course, :quiz]
-      can :attempt, :quiz
-      can :result, :quiz
+      can :read, [Course, Quiz, Question, Answer]
+      can :attempt, [Quiz, Question, Answer]
+      can :result, [Quiz, Question, Answer]
     end
 
     #

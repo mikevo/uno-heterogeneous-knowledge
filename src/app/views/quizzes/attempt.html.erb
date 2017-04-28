@@ -5,12 +5,12 @@
     <div>
       <% @count = 1 %>
       <%= form_tag "result" do %>
-          <% @questions.each do |x| %>
-              Questions: <%= x.question %> <br>
+          <% @questions.each do |question| %>
+              Questions: <%= question.content %> <br>
 
-              <% @options.where(question_id: x.id).each do |y| %>
-                  <%= radio_button_tag "question#{@count}", y.id %>
-                  <%= y.option %> <br>
+              <% @options.where(question_id: question.id).each do |option| %>
+                  <%= radio_button_tag "question#{@count}", option.id %>
+                  <%= option.content %> <br>
               <% end %>
               <br>
               <% @count = @count+1 %>

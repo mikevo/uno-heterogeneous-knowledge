@@ -15,12 +15,12 @@
               <hr>
               <div>
                 <h4> Questions </h4>
-                <%= f.fields_for :questions do |task| %>
-                    <%= render 'question_fields', :f => task %>
+                <%= f.fields_for :questions do |question| %>
+                    <%= render 'question_fields', :f => question %>
                 <% end %>
                 <div class='links'>
                   <br />
-                  <%= link_to_add_association 'Add question', f, :questions,class: "btn btn-primary btn-xs" %>
+                  <%= link_to_add_association 'Add question', f, :questions, class: "btn btn-primary btn-xs" %>
                 </div>
               </div>
               <br>

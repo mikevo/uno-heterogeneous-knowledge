@@ -8,8 +8,8 @@
         <hr>
         <div>
           <h4> Questions </h4>
-          <%= f.fields_for :questions do |task| %>
-              <%= render 'question_fields', :f => task %>
+          <%= f.fields_for :questions do |question| %>
+              <%= render 'question_fields', :f => question %>
           <% end %>
           <div class='links'>
             <%= link_to_add_association 'add questions', f, :questions %>
