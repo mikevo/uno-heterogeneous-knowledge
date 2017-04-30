@@ -10,12 +10,13 @@ The HKET or Heterogeneous Knowledge Examination Tool is a platform to conduct ex
 It is currently under development and not ready to be deployed in production.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Contents:
 
    quiz
    role
    use-case-doc
+   diagram-list
 
 The tool will support the creation of multiple choice tests by an instructor that can be taken by students.
 
