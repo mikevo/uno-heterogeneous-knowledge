@@ -10,3 +10,6 @@ The following use cases have been outlined:
    doc-diagrams/system-sequence-diagrams
    doc-diagrams/conceptual-class
    doc-diagrams/conceptual-er
+   doc-diagrams/relation-schema
+   doc-diagrams/models
+   doc-diagrams/controllers
