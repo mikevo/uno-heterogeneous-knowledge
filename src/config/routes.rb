@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index', as: :dashboard
 
   resources :users, only: [:new, :create]
+  get '/users/profile', to: 'users#profile'
   get '/users/password', to: 'users#password'
   put '/users/change_password', to: 'users#change_password'
   put '/users/:id/change_role_to/:role', to: 'users#change_role', as: :users_change_role
