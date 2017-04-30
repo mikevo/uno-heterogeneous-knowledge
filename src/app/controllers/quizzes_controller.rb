@@ -10,7 +10,7 @@ class QuizzesController < ApplicationController
 
     respond_to do |format|
         format.html { @quiz }
-        format.json { render json: json_format(@quiz) }
+        format.json { @quiz.to_json }
     end
   end
 
