@@ -10,7 +10,7 @@ class QuizzesController < ApplicationController
 
     respond_to do |format|
         format.html { @quiz }
-        format.json { @quiz.to_json }
+        format.json { render :json => @quiz }
     end
   end
 
@@ -77,8 +77,16 @@ class QuizzesController < ApplicationController
       count= count+1
     end
 
-    Result.create(student_id: current_user.id, quiz_id: params[:id], marks: @marks)
+    Result.create(student_id: current_user.id, quiz_id: params[:id], marks: @marks, possible_marks: count-1)
+  end
 
+  def score
+    @result = Result.where(student_id: current_user.id, quiz_id: params[:id])
+
+    respond_to do |format|
+        format.html
+        format.json { render :json => @result}
+    end
   end
 
   private
