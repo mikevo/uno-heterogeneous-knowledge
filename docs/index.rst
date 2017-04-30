@@ -14,6 +14,7 @@ It is currently under development and not ready to be deployed in production.
    :caption: Contents:
 
    quiz
+   course
    role
    use-case-doc
    diagram-list
