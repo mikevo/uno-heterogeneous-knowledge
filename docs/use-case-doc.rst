@@ -1,7 +1,7 @@
 Use Cases
 =========
 
-The following use cases have been outlined:
+The following diagrams have been created:
 
 .. toctree::
    :maxdepth: 2
@@ -16,4 +16,4 @@ The following use cases have been outlined:
    use_cases/UC8
    use_cases/UC9
 
-.. image:: diagrams/use_case.png
+The use case diagram can be viewed here: :doc:`/doc-diagrams/use-case-diagram`
