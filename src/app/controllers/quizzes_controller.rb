@@ -6,12 +6,9 @@ class QuizzesController < ApplicationController
   end
 
   def show
+    @user = User.find(current_user.id)
     @quiz = Quiz.find(params[:id])
-
-    respond_to do |format|
-        format.html { @quiz }
-        format.json { render json: json_format(@quiz) }
-    end
+    @quiz_completed = Result.find_by(student_id: current_user.id, quiz_id: params[:id])
   end
 
   def new
@@ -42,7 +39,6 @@ class QuizzesController < ApplicationController
     else
       render 'edit'
     end
-
   end
 
   def destroy
@@ -50,8 +46,6 @@ class QuizzesController < ApplicationController
     @quiz.destroy
     flash[:success] = "Quiz deleted."
     redirect_to quizzes_url
-
-
   end
 
   def attempt
@@ -77,8 +71,23 @@ class QuizzesController < ApplicationController
       count= count+1
     end
 
-    Result.create(student_id: current_user.id, quiz_id: params[:id], marks: @marks)
+    Result.create(student_id: current_user.id, quiz_id: params[:id], marks: @marks, possible_marks: count-1)
+  end
 
+  def score
+    @user = User.find(current_user.id)
+
+    if @user.role == "student"
+      @results = Result.where(student_id: current_user.id, quiz_id: params[:id]).first
+      @percentage = (@results.marks.to_f / @results.possible_marks) * 100.0
+    else
+      @results = Result.where(quiz_id: params[:id])
+    end
+
+    respond_to do |format|
+        format.html
+        format.json { render :json => @results}
+    end
   end
 
   private

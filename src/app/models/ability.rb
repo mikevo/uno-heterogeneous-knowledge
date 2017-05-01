@@ -18,6 +18,7 @@ class Ability
       can :read, [Course, Quiz, Question, Answer]
       can :attempt, [Quiz, Question, Answer]
       can :result, [Quiz, Question, Answer]
+      can :score, [Quiz, Result]
     end
 
     #

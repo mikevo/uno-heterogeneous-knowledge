@@ -1,0 +1,121 @@
+<% if @user.role == "student" %>
+  <h1><%= @quiz.title %> Results:</h1>
+  <h3><%= (@results.marks.to_f / @results.possible_marks) * 100.0 %>%</h3>
+  <p>Total points: <%= @results.possible_marks %></p>
+  <p>Total correct: <%= @results.marks %></p>
+<% else %>
+  <h1><%= @quiz.title %> Results:</h1>
+
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+      <canvas id="pieChart"></canvas>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Score</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @results.each do |result| %>
+          <td><%= result.student_id %></td>
+          <td><%= username_from_id(result.student_id) %></td>
+          <td><%= email_from_id(result.student_id) %></td>
+          <td><%= result.marks %></td>
+          <td><%= (result.marks.to_f / result.possible_marks) * 100.0 %>%</td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+  <script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var pieChartData = JSON.parse(this.responseText);
+        console.log(pieChartData);
+
+        var gradeCount = {
+          a: 0,
+          b: 0,
+          c: 0,
+          d: 0,
+          f: 0
+        };
+
+        pieChartData.forEach(function(result) {
+          if (result >= 90) {
+            gradeCount.a += 1;
+          } else if (result >= 80) {
+            gradeCount.b += 1;
+          } else if (result >= 70) {
+            gradeCount.c += 1;
+          } else if (result >= 60) {
+            gradeCount.d += 1;
+          } else {
+            gradeCount.f += 1;
+          }
+        });
+
+        console.log(gradeCount);
+
+        var data = {
+            labels: [
+                "A's",
+                "B's",
+                "C's",
+                "D's",
+                "F's"
+            ],
+            datasets: [
+                {
+                    data: [
+                      gradeCount.a,
+                      gradeCount.b,
+                      gradeCount.c,
+                      gradeCount.d,
+                      gradeCount.f
+                    ],
+                    backgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56",
+                        "rgba(75,192,192,1)",
+                        "rgba(220,220,220,1)"
+                    ],
+                    hoverBackgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56",
+                        "rgba(75,192,192,1)",
+                        "rgba(220,220,220,1)"
+                    ]
+                }]
+        };
+
+        var ctx = document.getElementById("pieChart");
+        console.log(ctx);
+
+        var myPieChart = new Chart(ctx,{
+          type: 'pie',
+          data: data,
+          options: {
+            animation:{
+                animateScale:true
+            }
+          }
+        });
+      }
+    };
+    xhttp.open("GET", "/quizzes/<%= @quiz.id %>/score.json", true);
+    xhttp.send();
+  </script>
+<% end %>
