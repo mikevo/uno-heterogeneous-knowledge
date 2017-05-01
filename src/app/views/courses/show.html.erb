@@ -5,7 +5,8 @@
       <h3>Teacher</h3>
       <span class="course-teacher"><%= @course.teacher.username %></span>
       <p>Course Info Here</p>
-      <div class="course-students">
+      
+	  <div class="course-students">
         <h3>Students</h3>
         <ul>
         <% @course.students.each do |student| %>
@@ -13,8 +14,24 @@
         <% end %>
         </ul>
       </div>
+	  
+	  <div class="course-quizzes">
+		<h3>Quizzes</h3>
+		<ul>
+		<% @course.quizzes.each do |quiz| %>
+			<div class="quiz-card-wrapper col-sm-4">
+				<div class="quiz-card">
+					<div class="quiz-card-contents">
+						<h2><%= quiz.title %></h2>
+						<p><%= link_to "View Quiz", {:action => 'show', :id => quiz.id} %></p>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	  </div>
     </div>
     <% if can? :edit, Course %>
+	<div class ="course-options">
     	<p class="course-edit">
         <%= link_to edit_course_path(@course), class: "btn btn-warning" do %>
           <i class="glyphicon glyphicon-edit"></i> Edit Course
@@ -26,6 +43,7 @@
           <i class="glyphicon glyphicon-remove-circle"></i> Delete Course
         <% end %>
     	</p>
+	</div>
     <% end %>
   </div>
 </div>
