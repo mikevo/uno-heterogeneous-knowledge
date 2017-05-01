@@ -23,15 +23,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <% @results.each do |result| %>
+      <% @results.each do |result| %>
+        <tr>
           <td><%= result.student_id %></td>
           <td><%= username_from_id(result.student_id) %></td>
           <td><%= email_from_id(result.student_id) %></td>
           <td><%= result.marks %></td>
           <td><%= (result.marks.to_f / result.possible_marks) * 100.0 %>%</td>
-        <% end %>
-      </tr>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 
@@ -41,7 +41,6 @@
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         var pieChartData = JSON.parse(this.responseText);
-        console.log(pieChartData);
 
         var gradeCount = {
           a: 0,
@@ -51,7 +50,10 @@
           f: 0
         };
 
-        pieChartData.forEach(function(result) {
+        pieChartData.forEach(function(resultData) {
+          console.log("resultData",resultData);
+          var result = (resultData.marks / resultData.possible_marks) * 100;
+          console.log("result",result);
           if (result >= 90) {
             gradeCount.a += 1;
           } else if (result >= 80) {
