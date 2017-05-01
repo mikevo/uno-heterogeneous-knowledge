@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'quizzes/:id/score', to: 'quizzes#score'
+  get 'quizzes/:id/score', to: 'quizzes#score', as: :quiz_score
 
   root 'static_pages#home'
 
